@@ -9,3 +9,19 @@
 // Output: false
 
 
+function containsAllProperties(obj1, obj2) {
+  for (let key in obj2) {
+      if (!(key in obj1) || obj1[key] !== obj2[key]) {
+          return false;
+      }
+    }
+  return true;
+}
+
+const obj1a = { name: "John", age: 23, degree: "CS" };
+const obj2a = { age: 23, degree: "CS" };
+console.log(containsAllProperties(obj1a, obj2a));
+
+const obj1b = { name: "John", degree: "CS" };
+const obj2b = { name: "Max", age: 23, degree: "CS" };
+console.log(containsAllProperties(obj1b, obj2b)); 
