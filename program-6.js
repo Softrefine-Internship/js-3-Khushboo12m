@@ -23,10 +23,10 @@
 //     { employee_id: 3, employee_name: 'Chaitanya' }
 // ] 
 
-function updateEmployeeName(arr, id, newName) {
+function updateEmployeeName(arr, id, property, newValue) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].employee_id === id) {
-            arr[i].employee_name = newName;
+            arr[i][property] = newValue; 
             break; 
         }
     }
@@ -39,7 +39,6 @@ let employees = [
     { employee_id: 3, employee_name: "Chaitanya" }
 ];
 
-let updatedEmployees = updateEmployeeName(employees, 2, "Rahul");
-
+let updatedEmployees = updateEmployeeName(employees, 2, "employee_name", "Rahul");
 console.log(updatedEmployees);
 

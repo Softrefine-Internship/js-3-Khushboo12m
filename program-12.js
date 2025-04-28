@@ -16,13 +16,19 @@
 
 
 function getLongestString(arr) {
-    let longest = "";
+    let longestStrings = [];
+    let maxLength = 0;
+
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i].length > longest.length) {
-            longest = arr[i];
+        let str = arr[i];
+        if (str.length > maxLength) {
+            longestStrings = [str]; 
+            maxLength = str.length;
+        } else if (str.length === maxLength) {
+            longestStrings.push(str); 
         }
     }
-    return longest;
+    return longestStrings;
 }
 
 let languages = ["JavaScript", "Python", "Java", "C++", "Ruby", "Swift"];

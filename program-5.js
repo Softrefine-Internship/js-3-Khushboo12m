@@ -37,28 +37,27 @@
 
 
 
-function countEmployeeNameOccurrences(arr) {
-  const nameCountMap = {};
-
-  for (let i = 0; i < arr.length; i++) {
-      const name = arr[i].employeeName;
-      if (nameCountMap[name]) {
-          nameCountMap[name]++;
-      } else {
-          nameCountMap[name] = 1;
+function countEmployeeNameOccurrences(arr, property) {
+    const countMap = {};
+  
+    for (let i = 0; i < arr.length; i++) {
+      const key = arr[i][property]; 
+      if (key !== undefined) {
+        countMap[key] = (countMap[key] || 0) + 1;
       }
-  }
-
-  const result = [];
-  for (let name in nameCountMap) {
+    }
+  
+    const result = [];
+    for (let key in countMap) {
       result.push({
-          employeeName: name,
-          occurrences: nameCountMap[name]
+        [property]: key,
+        occurrences: countMap[key]
       });
+    }
+  
+    return result;
   }
-
-  return result;
-}
+  
 
 const arr = [
   { employeeName: "Ram", employeeId: 23 },
@@ -69,5 +68,5 @@ const arr = [
   { employeeName: "Shyam", employeeId: 20 }
 ];
 
-console.log(countEmployeeNameOccurrences(arr));
-
+  console.log(countEmployeeNameOccurrences(arr, 'employeeName'));
+  
